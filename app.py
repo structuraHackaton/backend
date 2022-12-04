@@ -96,16 +96,6 @@ def user_update(id):
     return user_schema.jsonify(user)
 
 
-# endpoint to delete user
-@app.route("/user/<id>", methods=["DELETE"])
-def user_delete(id):
-    user = User.query.get(id)
-    db.session.delete(user)
-    db.session.commit()
-
-    return user_schema.jsonify(user)
-
-
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
